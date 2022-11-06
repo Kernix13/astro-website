@@ -2,16 +2,12 @@
 import '../styles/cards.css';
 
 export interface Props {
-  title: string;
-  body: string;
   dark?: boolean;
 }
 
-const {title, body} = Astro.props as Props;
+const {dark = false} = Astro.props as Props;
 ---
 
-<!-- <div class={`card ${dark && 'dark'}`}> -->
-<div class="card">
-  <h3>{title}</h3>
-  <p>{body}</p>
+<div class={`card ${dark && 'dark'}`}>
+  <slot />
 </div>
