@@ -35,7 +35,3 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`      | Preview your build locally, before deploying       |
 | `npm run astro ...`    | Run CLI commands like `astro add`, `astro preview` |
 | `npm run astro --help` | Get help using the Astro CLI                       |
-
-## HTML & CSS Theme
-
-All of the .html files, style.css and images are in the `astro-website-theme` folder.

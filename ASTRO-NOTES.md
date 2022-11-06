@@ -248,6 +248,7 @@ const posts = await response.json();
 - Look at `dist/index.html` - the only JS in it is the code for the Tabs in a script tag - _Island Architecture_: No other script tags, HTML (water) with JS islands
 - He says you can deploy your entire project to GitHub then push it to Netlify, then Netlify will host the dist folder
 - You don't need to push the dist folder, Netlify will build it for you
+- If you add a new markdown post, just push to GitHub and Netlify will handle the rest
 
 - - - 
 
