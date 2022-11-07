@@ -47,3 +47,5 @@ All commands are run from the root of the project, from a terminal:
 1. Click Deploy site 
 
 > Double-check those notes the next time I deploy to Netlify 
+
+<!-- folder: Documents/WebDev/Traversy/astro-project -->
