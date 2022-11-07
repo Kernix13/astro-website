@@ -35,3 +35,15 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`      | Preview your build locally, before deploying       |
 | `npm run astro ...`    | Run CLI commands like `astro add`, `astro preview` |
 | `npm run astro --help` | Get help using the Astro CLI                       |
+
+## Netlify
+
+1. Click `Add new site`
+1. Select `Import an existing project`
+1. Under _Connect to Git provider_ select GitHub
+1. Authorize Netlify - Choose all repos - Choose your repo
+1. Under Basic build settings, in the Build cmd field type `npm run build` 
+1. Double-check the fields
+1. Click Deploy site 
+
+> Double-check those notes the next time I deploy to Netlify 
