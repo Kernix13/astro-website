@@ -250,6 +250,20 @@ const posts = await response.json();
 - You don't need to push the dist folder, Netlify will build it for you
 - If you add a new markdown post, just push to GitHub and Netlify will handle the rest
 
+It's been a while but here are my notes on Netlify:
+
+1. Click `Add new site`
+1. Select `Import an existing project`
+1. Under _Connect to Git provider_ select GitHub
+1. Authorize Netlify - Choose all repos - Choose your repo
+1. Under Basic build settings, in the Build cmd field type `npm run build` 
+1. Double-check the fields
+1. Click Deploy site 
+
+> Double-check those notes the next time I deploy to Netlify 
+
+Also check out the GitHub Action [Netlify Actions](https://github.com/marketplace/actions/netlify-actions).
+
 - - - 
 
 ## Interfaces from TypeScript repo
