@@ -28,7 +28,7 @@ a:hover {
   text-decoration: underline;
 }
 
-p.code {
+p > code {
   background-color: #ddd;
   font-family: 'Courier New', Courier, monospace;
 }
