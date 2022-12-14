@@ -4,7 +4,7 @@ Video by Brad Traversy: [Astro Crash Course](https://youtu.be/Oi9z5gfIHJs), and 
 
 Go to [Astro Docs](https://docs.astro.build/en/getting-started/) for detailed info.
 
-There is a basic Astro Action on the Actions tab. Compare that YAML file to [Astro Github Action](https://github.com/marketplace/actions/astro-deploy): 
+There is a basic Astro Action on the Actions tab. Compare that YAML file to [Astro Github Action](https://github.com/marketplace/actions/astro-deploy):
 
 > This action for Astro builds your Astro project for GitHub Pages. Also the last action on the Actions page is for Astro: Deploy an Astro site but it's not the 1st one.
 
@@ -13,7 +13,7 @@ There is a basic Astro Action on the Actions tab. Compare that YAML file to [Ast
 - Astro is for building static websites - it acts a lot like a static site generator
 - Other popular SSGs: Gatsby (React), Jekyll, Hugo, Gridsome (Vue), Eleventy, and Pelican
 - Astro integrates with frameworks like React or just use Astro components
-- Basically, you structure your site with UI components 
+- Basically, you structure your site with UI components
 - _Island Architecture_: a paradigm that aims to reduce the volume of JavaScript shipped through "islands" of interactivity that can be independent delivered on top of otherwise static HTML...are a component-based architecture that suggests a compartmentalized view of the page with static and dynamic islands
 - Astro tries to get away from your entire page being loaded with JavaScript
 - You can use Astro components only or combine with React, Vue, or Svelte omponents
@@ -26,10 +26,10 @@ There is a basic Astro Action on the Actions tab. Compare that YAML file to [Ast
 
 - Run `npm create astro@latest` - the wizard is horrible - how do you navigate the terminal - could not change the folder name, ...
 - Choose "Relaxed" for TypeScript, "yes" to git
-- In `package.json` => `npm run dev` and `npm run start` will start the server 
+- In `package.json` => `npm run dev` and `npm run start` will start the server
 - Other scripts: `npm run build` and `npm run preview`
 - `astro.config.mjs`: can add React in here if you want to use that
-- `tsconfig.json`: 
+- `tsconfig.json`:
 - `src/pages`: pages are components - when you add a page the route is automatically setup
 - `src/pages/index.astro` is the home page
 - `src/layouts` is where things like your nav goes - I don't have that folder nor do I have `src/components` folder
@@ -40,7 +40,7 @@ There is a basic Astro Action on the Actions tab. Compare that YAML file to [Ast
 - Add folders like components, layouts, images, posts, styles, etc
 - You may have to install the Astro extension to handle `.astro` files
 
-### Using JavaScript 
+### Using JavaScript
 
 - All the HTML and Astro tags tags are dynamic, you can add JS expressions in them, e.g. `{users.map(user => <li>{user}</li>)}`
 - You don't need a wrapper around your HTML elements but you could do `<></>`
@@ -57,7 +57,7 @@ There is a basic Astro Action on the Actions tab. Compare that YAML file to [Ast
 
 Pages and layouts are all components and you can pass `props` into them.
 
-- There is a `title` in Layout but you will want to change that for different pages (SEO) 
+- There is a `title` in Layout but you will want to change that for different pages (SEO)
 - You can pass `{Astro.props.title}` into the title tag but instead add JS at the top of Layout and destructure `Astro.props` which is obviously an object that Astro provides
 - Use a TypeScript `interface` which is like `propTypes` in React
 - You can add a default value for a prop, e.g, `{title = 'Astro Website'}`
@@ -93,7 +93,7 @@ export default defineConfig({
 });
 ```
 
-- Create a React function them import it into `index.astro` - then you can bring in `useState` or any other hook: 
+- Create a React function them import it into `index.astro` - then you can bring in `useState` or any other hook:
 
 ```jsx
 // Showcase.jsx
@@ -116,21 +116,21 @@ import Showcase from '../components/Showcase.jsx';
 
 ### Showcase
 
-- create `components/Showcase.astro` - 
+- create `components/Showcase.astro` -
 - Props for showcase: heading, text - use `interface` (ee notes at bootom for TypeScript interface)
-- `heading` and `text` will have default values for this file, for other pages you would add the values into the component tag 
+- `heading` and `text` will have default values for this file, for other pages you would add the values into the component tag
 
 ### Features component
 
-- For the cards he recommends creating an arrray of objects for the title and body and adding it in that way - that is how you might get data from an API - 
+- For the cards he recommends creating an arrray of objects for the title and body and adding it in that way - that is how you might get data from an API -
 - I tried to do the `featuresData.map` myself and it did not work because after `=>` I used `{}` instead of `()` like with React
 
 ### Card component
 
-- Cut the div for the card out of Features and add to `Card.astro` 
-- First, implement 1 way for title and body, then refactor later 
+- Cut the div for the card out of Features and add to `Card.astro`
+- First, implement 1 way for title and body, then refactor later
 - I would not have got this: `<Card title={feature.title} body={feature.body} />`
-- Add a boolean for a dark theme to the card - 
+- Add a boolean for a dark theme to the card -
 - YOU HAVE TO REMEMBER THIS SYNTAX:
 
 ```ts
@@ -139,29 +139,29 @@ export interface Props {
   body: string;
 }
 
-const {title, body, dark = false} = Astro.props as Props;
+const { title, body, dark = false } = Astro.props as Props;
 ```
 
 > Something happened where my CSS was not updated. I even removed all the CSS from cards.css and features.css and the styles remained. CACHING?
 
 ### Page content and Tabs component
 
-- This will be the text on the index page  
+- This will be the text on the index page
 - A Tab component with all the JS functionality for it in the file
 - Pass in props for the headings and body so that it is a customizable and reusable Tab component
 - Paste the HTML into `index.astro`, then create `Tabs.astro` and cut/paste the tabs HTML into that file thn import it into index
-- Also grab the `page-content` CSS and put that in the global file so it is available for every page 
+- Also grab the `page-content` CSS and put that in the global file so it is available for every page
 - Create `tabs.css` and add the CSS into there and import into Tabs
 - For the JS, I got an error when I added it to the js hyphen code block at the top, but it worked in a `script` tag (???)
 
-> Note: in React  you can't paste in vanilla JS and have it work, but it does in Astro
+> Note: in React you can't paste in vanilla JS and have it work, but it does in Astro
 
 - Pass in variables to the `<script>` tag or pass it props - we want to pass in the color for the selected installer selected in the tabs as a prop
 - Had to use `?` to make it optional or pass it into `<Tabs activeTextColor="#A741FF" />` to prevent a file error - but that is what you would do with any other page with tabs
 
 > THIS IS THE MODERN WAY TO BUILD STATIC SITES! THAT EXAMPLE...
 
-Now he wants to make the content props in case you have other tabs on other pages 
+Now he wants to make the content props in case you have other tabs on other pages
 
 - see code
 
@@ -191,16 +191,20 @@ Now he wants to make the content props in case you have other tabs on other page
 - See the code but he had to make the change in Features also:
 
 ```jsx
-{featuresData.map(feature => (
-  <Card title={feature.title} body={feature.body} />
-))}
+{
+  featuresData.map(feature => (
+    <Card title={feature.title} body={feature.body} />
+  ));
+}
 // to
-{featuresData.map(feature => (
-  <Card>
-    <h3>{feature.title}</h3>
-    <p>{feature.body}</p>
-  </Card>
-))}
+{
+  featuresData.map(feature => (
+    <Card>
+      <h3>{feature.title}</h3>
+      <p>{feature.body}</p>
+    </Card>
+  ));
+}
 ```
 
 - It's up to you - if your cards will only ever have a heading and a title, you could leave it how it was - or add other props
@@ -211,18 +215,22 @@ Now he wants to make the content props in case you have other tabs on other page
 - He is going to fetch them from `jsonplaceholder` - fetch example
 
 ```js
-const response = await fetch('https://jsonplaceholder.typicode.com/posts/?_limit=5');
+const response = await fetch(
+  'https://jsonplaceholder.typicode.com/posts/?_limit=5'
+);
 
 const posts = await response.json();
 ```
 
 ```jsx
-{posts.map(post => (
-  <Card>
-    <h3>{post.title}</h3>
-    <p>{post.body}</p>
-  </Card>
-))}
+{
+  posts.map(post => (
+    <Card>
+      <h3>{post.title}</h3>
+      <p>{post.body}</p>
+    </Card>
+  ));
+}
 ```
 
 ### Markdown
@@ -235,7 +243,7 @@ const posts = await response.json();
 ### Slug
 
 - `[field_the_url_is_connected_to].astro`, or `[slug].astro`
--  In Next.js when you need to create paths, you use a function called `getStaticPaths()` - Astro also has that function
+- In Next.js when you need to create paths, you use a function called `getStaticPaths()` - Astro also has that function
 - return from it an object that has an array of params - with the fields that we want to use for the URLs
 - The following code is not something I've ever done or would have thought of!
 - Now you can get your posts and frontmatter thru props
@@ -256,31 +264,31 @@ It's been a while but here are my notes on Netlify:
 1. Select `Import an existing project`
 1. Under _Connect to Git provider_ select GitHub
 1. Authorize Netlify - Choose all repos - Choose your repo
-1. Under Basic build settings, in the Build cmd field type `npm run build` 
+1. Under Basic build settings, in the Build cmd field type `npm run build`
 1. Double-check the fields
-1. Click Deploy site 
+1. Click Deploy site
 
-> Double-check those notes the next time I deploy to Netlify 
+> Double-check those notes the next time I deploy to Netlify
 
 Also check out the GitHub Action [Netlify Actions](https://github.com/marketplace/actions/netlify-actions).
 
-- - - 
+---
 
 ## Interfaces from TypeScript repo
 
 Check the [interface docs](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#enums).
 
-- like a custom type or a specific structure to an object 
+- like a custom type or a specific structure to an object
 
 ```ts
 interface UserInterface {
-  id: number,
-  name: string
+  id: number;
+  name: string;
 }
 const user: UserInterface = {
   id: 1,
-  name: 'Jim'
-}
+  name: 'Jim',
+};
 ```
 
 - Use an `interface` over a `type` but there are differnces
@@ -289,9 +297,9 @@ const user: UserInterface = {
 
 ```ts
 interface UserInterface {
-  readonly id: number,
-  name: string,
-  age?: number
+  readonly id: number;
+  name: string;
+  age?: number;
 }
 ```
 
@@ -299,9 +307,49 @@ interface UserInterface {
 
 ```ts
 interface MathFunc {
-  (x: number, y: number): number
+  (x: number, y: number): number;
 }
 const add: MathFunc = (x: number, y: number): number => x + y;
 const subtract: MathFunc = (x: number, y: number): number => x - y;
 // why not this: const add: MathFunc = (x, y) => x + y;
 ```
+
+## Astro
+
+From Kevin Powell video: Create template layouts for your HTML with Astro SSG
+
+> The main thing is `npm run build` builds the html pages
+
+- create afolder, e.g. `astro-example` or `astro-project`
+- in terminal enter `npm init astro`
+- answer Which app template would you like to use? Choices are Starter Kit, Blog, Documentation, Portfolio, Minimal,
+- choose Starter Kit or Minimal - next choose a framework or not - ENTER
+- then `npm install` then `npm run dev`
+
+### Templates
+
+- to create templates delete everrything inside index.astra in the body tag
+- delete the style tag inside the head tag
+- also in the head is a global.css and home.css link, delete home and rename global to style.css and then create that
+- replace the favicon and delete the comments if you want
+- if you already created html pages you can drag them into the pages folder
+- create a new folder inside src called `layouts`
+- in there create `MainLayout.astro`
+
+NOTE: in Astro layouts are components
+
+- cut everything below `\`\`\`` (front matter) in index.astro and paste into MainLAyout
+- cut the header tag out of your index.html and paste into MainLayout
+- back in index.astro import MainLayout and add `<MainLayout></MainLayout>`
+  back in MainLayout add a footer and above that add `<slot></slot>`
+- slot means you slt your content that you are adding to your pages there
+- then back in index.astro you can add content between the MainLayout tags
+- change about.html to about.astro, import MainLAyout at top in triple backticks and next youe content between MainLayout tags
+- in MainLayout at top add `let {title} = Asro.props` delete that in index.astro, but in the opening MainLAyout tag add `title="Your title"`
+- add that prop to that tag in all your other files but with the correct title
+- you should make the nav a component then import that into MainLAyout
+
+Then `npm run build` to generate html pages in `dist`
+
+- `about` folder with `index.html`, `services` folder with `index.html` - that's how you don't see file extensions w\o htaccess (`pretty urls`)
+- `npm run preview` will preview what is in the `dist` folder
